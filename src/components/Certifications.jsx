@@ -1,41 +1,48 @@
 // file: src/components/Certifications.jsx
 import React, { useMemo, useRef, useState } from "react";
+import awsLogo from "../assets/aws-logo.png";
+import gcpLogo from "../assets/gcp-logo.png";
+import azureLogo from "../assets/azure-logo.jpeg";
+// import salesforceLogo from "../assets/salesforce-logo.png";
+// import mongodbLogo from "../assets/mongodb-logo.png";
+// import scrumLogo from "../assets/scrum-logo.png";
+// import githubLogo from "../assets/github-logo.png";
 
 const certificationsData = [
   {
     title: "AWS Certified Solutions Architect Associate",
     vendor: "Amazon Web Services (AWS)",
-    logo: "/aws-saa-logo.png",
-    link: "#",
+    logo: awsLogo,
+    link: "https://www.credly.com/badges/fab05b81-83ea-46f1-be68-568b62b65eda/linked_in_profile",
   },
   {
     title: "AWS Certified Developer Associate",
     vendor: "Amazon Web Services (AWS)",
-    logo: "/aws-dev-logo.png",
+    logo: awsLogo,
     link: "#",
   },
   {
     title: "AWS Certified Cloud Practitioner",
     vendor: "Amazon Web Services (AWS)",
-    logo: "/aws-ccp-logo.png",
+    logo: awsLogo,
     link: "#",
   },
   {
     title: "Google Cloud Certified Associate Cloud Engineer",
     vendor: "Google Cloud Platform (GCP)",
-    logo: "/gcp-ace-logo.png",
+    logo: gcpLogo,
     link: "#",
   },
   {
     title: "AI-102: Azure AI Engineer Associate",
     vendor: "Microsoft Azure",
-    logo: "/azure-ai-logo.png",
+    logo: azureLogo,
     link: "#",
   },
   {
     title: "DP-100: Azure Data Scientist Associate",
     vendor: "Microsoft Azure",
-    logo: "/azure-ds-logo.png",
+    logo: azureLogo,
     link: "#",
   },
   {

@@ -52,3 +52,39 @@ html {
 section[id] {
   scroll-margin-top: 6.5rem; /* ~104px */
 }
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.animate-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 10s linear infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(130,69,236,0.35)); }
+  50% { filter: drop-shadow(0 0 26px rgba(168,85,247,0.6)); }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3.8s ease-in-out infinite;
+}

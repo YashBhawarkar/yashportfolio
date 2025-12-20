@@ -1,5 +1,7 @@
 // file: src/components/Education.jsx
 import React from 'react';
+import msuLogo from "../assets/msu-logo.png";
+import dyLogo from "../assets/dypatil-logo.jpeg";
 
 const educationData = [
   {
@@ -7,16 +9,16 @@ const educationData = [
     institution: "Michigan State University",
     date: "August 2025 - May 2027 (Expected)",
     description: "Master of Science in Computer Science.",
-    logo: "/MSU-1-BAgyX3QL.png", // Placeholder image path
-    icon: "/MSU-2-E7TTMMNX.png", // Placeholder image path
+    logo: msuLogo,
+    icon: msuLogo
   },
   {
     title: "Bachelor of Engineering in Computer Engineering",
     institution: "Dr. DY Patil's Ramrao Adik Institute of Technology",
     date: "August 2018 - May 2022 (GPA: 4.00)",
     description: "Bachelor of Engineering in Computer Engineering (GPA:4.00).",
-    logo: "/GTU-1-Dal-fBSf.png", // Placeholder image path
-    icon: "/GTU-2-DT3eVn2v.png", // Placeholder image path
+    logo: dyLogo,
+    icon: dyLogo
   },
 ];
 
