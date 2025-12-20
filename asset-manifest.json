@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/yashportfolio/static/css/main.fbbee963.css",
+    "main.js": "/yashportfolio/static/js/main.1c5b2410.js",
+    "static/js/453.f9ef89a4.chunk.js": "/yashportfolio/static/js/453.f9ef89a4.chunk.js",
+    "index.html": "/yashportfolio/index.html",
+    "main.fbbee963.css.map": "/yashportfolio/static/css/main.fbbee963.css.map",
+    "main.1c5b2410.js.map": "/yashportfolio/static/js/main.1c5b2410.js.map",
+    "453.f9ef89a4.chunk.js.map": "/yashportfolio/static/js/453.f9ef89a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbbee963.css",
+    "static/js/main.1c5b2410.js"
+  ]
+}
