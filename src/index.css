@@ -46,6 +46,7 @@
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 /* Offset anchor jump for fixed navbar (adjust if you change navbar height) */

@@ -5,32 +5,78 @@ const skillCategories = [
   {
     title: "Backend",
     icon: "🧩",
-    items: ["Node.js", "Express.js", "REST APIs", "Firebase", "MongoDB", "Auth", "System Design"],
+    items: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "System Design",
+      "Authentication",
+      "Authorization",
+      "JavaScript"
+    ],
   },
   {
     title: "Cloud",
     icon: "☁️",
-    items: ["GCP", "AWS", "Azure", "Cloud Functions", "Firestore", "Vertex AI", "CI/CD Basics"],
+    items: [
+      "GCP",
+      "AWS",
+      "Azure",
+      "Serverless Functions",
+      "Firebase",
+      "CI/CD"
+    ],
+  },
+  {
+    title: "Generative AI",
+    icon: "🧠",
+    items: [
+      "RAG",
+      "LoRA Fine-Tuning",
+      "Vector Databases",
+      "Embeddings",
+      "Prompt Engineering",
+      "LLM API Integration"
+    ],
   },
   {
     title: "AI / ML",
     icon: "🤖",
-    items: ["Vertex AI", "Computer Vision", "Model Integration", "Recommendations", "Python", "Deep Learning Basics"],
+    items: [
+      "Vertex AI",
+      "Bedrock",
+      "Machine Learning Pipelines",
+      "Model Deployment",
+      "Recommendations",
+      "Python",
+      "Deep Learning Fundamentals"
+    ],
   },
   {
     title: "Frontend",
     icon: "🖥️",
-    items: ["React", "TailwindCSS", "Responsive UI", "SPA Patterns", "Accessibility Basics"],
+    items: [
+      "React",
+      "Tailwind CSS",
+      "Responsive Design",
+      "SPA Architecture",
+      "Accessibility Basics"
+    ],
   },
   {
-    title: "Dev Tools",
-    icon: "🛠️",
-    items: ["Git", "GitHub", "Postman", "Jest (Basics)", "Linux CLI"],
-  },
-  {
-    title: "Practices",
+    title: "Dev Practices",
     icon: "📌",
-    items: ["Clean Code", "Scalability", "Debugging", "Documentation", "Agile/Scrum"],
+    items: [
+      "Git/GitHub",
+      "Docker",
+      "Postman",
+      "Clean Code",
+      "Scalability",
+      "Debugging",
+      "Documentation",
+      "Agile / Scrum",
+      "Version Control"
+    ],
   },
 ];
 
@@ -78,7 +124,7 @@ export default function Skills() {
         <h2 className="text-4xl font-bold text-white">SKILLS</h2>
         <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
-          A snapshot of the tools and technologies I use to build scalable systems.
+          Key skills and technologies I use to create reliable, scalable, and high-performance software systems.
         </p>
       </div>
 
@@ -86,10 +132,6 @@ export default function Skills() {
         {skillCategories.map((c) => (
           <CategoryCard key={c.title} title={c.title} icon={c.icon} items={c.items} />
         ))}
-      </div>
-
-      <div className="mt-10 text-center text-gray-400 text-sm">
-        Tip: If you want, we can make these pills clickable (filter Projects by skill).
       </div>
     </section>
   );

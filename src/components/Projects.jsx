@@ -1,60 +1,101 @@
 // file: src/components/Projects.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 const projectsData = [
   {
-    title: "TCS CIRCLE4LIFE (Sustainability App)",
-    desc: "Engineered a robust backend for a mobile app delivering personalized Sustainability Development Goals and Carbon Footprint Reduction solutions, employing Node.js, Express.js, Firebase, and Google Cloud Platform (GCP). Leveraged Vertex AI and machine learning models to provide AI-driven insights.",
-    skills: ["Node.js", "Express.js", "GCP", "Vertex AI", "Machine Learning"],
-    image: "/placeholder-sustainability.png",
-  },
-  {
-    title: "TCS CLICKFIT (Employee Fitness App)",
-    desc: "Orchestrated the backend development for an Employee Fitness Engagement app, incorporating Cloud Vision API, Cloud Functions, and Firestore on Google Cloud Platform (GCP). Integrated ML-based activity classification.",
-    skills: ["GCP", "Cloud Vision API", "Cloud Functions", "Firestore", "ML-based Activity Classification"],
-    image: "/placeholder-health.png",
+    title: "Circle4Life",
+    desc: "Designed and developed a full-stack mobile application backend delivering personalized Sustainability Development Goals (SDGs) and Carbon Footprint Reduction solutions. Utilized Node.js, Express.js, and Firebase for scalable backend APIs, integrated MongoDB for efficient data management, and deployed on Google Cloud Platform (GCP) with serverless architecture. Leveraged Vertex AI and custom machine learning models for AI-driven recommendations and analytics. Implemented REST APIs, real-time notifications, and robust security, enabling high user engagement and operational efficiency.",
+    skills: ["Node.js", "Express.js", "GCP", "Firebase", "Git", "Vertex AI", "SendGrid", "Azure"],
+    link: "https://circle4life.tcsapps.com/",
   },
   {
     title: "Diabetic Retinopathy Detection (AI Research)",
     desc: "Constructed a reliable system for Diabetic Retinopathy detection using deep neural networks, utilizing the Efficient Net B5 architecture. Showcased research outcomes at the International Conference on Automation, Computing and Communication 2022 (ICACC-2022).",
-    skills: ["Deep Neural Networks", "Efficient Net B5", "Computer Vision", "Machine Learning", "Python"],
-    image: "/placeholder-ai-health.png",
+    skills: ["Python", "Tensorflow" , "Computer Vision", "EfficientNet B5", "Deep Learning" , "Neural Networks"],
+    link: "https://www.researchgate.net/publication/360393263_Diabetic_Retinopathy_Detection_From_Fundus_Images_Using_Multi-Tasking_Model_With_EfficientNet_B5",
   },
   {
-    title: "Placeholder Project 4",
-    desc: "Backend Development focusing on scalable enterprise products.",
+    title: "Groq RAG Assistant",
+    desc: "Developed a Retrieval-Augmented Generation (RAG) assistant. Users can upload PDFs or provide web URLs to query knowledge bases with context-aware answers and referenced sources. Deployed on Streamlit Cloud with live demo.",
+    skills: ["Python", "LangChain", "FAISS", "HuggingFace Embeddings", "Groq LLM", "Streamlit"],
+    link: "https://groq-rag-assistant.streamlit.app/"
+  },
+  {
+    title: "Project 4",
+    desc: "Backend development focusing on scalable enterprise products.",
     skills: ["Node.js", "Express.js", "MongoDB", "REST APIs"],
-    image: "/placeholder-project-4.png",
+    link: "https://example.com/project-4", // <-- change
   },
   {
-    title: "Placeholder Project 5",
+    title: "Project 5",
     desc: "Cloud-native system design and deployment on AWS and Azure.",
-    skills: ["AWS", "Azure", "Docker", "Git", "Cloud Architecture"],
-    image: "/placeholder-project-5.png",
+    skills: ["AWS", "Azure", "Docker", "Cloud Architecture"],
+    link: "https://example.com/project-5", // <-- change
   },
 ];
 
-const ProjectCard = ({ title, desc, image, skills, index, isHovered, onHover }) => {
+const ProjectCard = ({ title, desc, skills, link, index, isHovered, onHover }) => {
+  const handleOpen = () => {
+    if (!link || link === "#") return;
+    window.open(link, "_blank", "noopener,noreferrer");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleOpen();
+    }
+  };
+
   return (
     <div
-      className={`flex-none w-64 md:w-72 lg:w-80 h-full mx-2 cursor-pointer transition-all duration-300 rounded-lg overflow-hidden bg-gray-800 border border-gray-700
-      ${isHovered ? 'scale-[1.2] z-40 shadow-2xl shadow-purple-700/80 -translate-y-6' : 'z-30 opacity-50 hover:opacity-100'}
+      role="link"
+      tabIndex={0}
+      aria-label={`Open project: ${title}`}
+      onClick={handleOpen}
+      onKeyDown={handleKeyDown}
+      className={`flex-none w-64 md:w-72 lg:w-80 h-[420px] mx-2 cursor-pointer transition-all duration-300 rounded-lg overflow-hidden bg-gray-800 border border-gray-700
+      ${isHovered ? "scale-[1.08] z-40 shadow-2xl shadow-purple-700/80 -translate-y-3" : "z-30 opacity-70 hover:opacity-100"}
+      focus:outline-none focus:ring-2 focus:ring-purple-500/70
       `}
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
-      // Added relative positioning to ensure z-index works correctly within the flex container
-      style={{ position: 'relative' }} 
+      style={{ position: "relative" }}
     >
-      <div className="relative w-full h-40">
-        <img src={image} alt={title} className="w-full h-full object-cover"/>
-        <div className="absolute inset-0 bg-black/40"></div>
+      {/* Top banner */}
+      <div className="relative w-full h-16 bg-gradient-to-r from-purple-700/40 via-pink-600/20 to-indigo-600/30 border-b border-gray-700">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white text-sm">
+            {"</>"}
+          </span>
+          <span className="text-white/80 text-sm font-semibold">Project</span>
+
+          {/* tiny hint */}
+          {link && link !== "#" && (
+            <span className="ml-2 text-[11px] text-gray-300/70 border border-white/10 px-2 py-[2px] rounded-full">
+              Open ↗
+            </span>
+          )}
+        </div>
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-bold text-white mb-2 truncate">{title}</h3>
-        <p className="text-gray-400 text-sm mb-3 line-clamp-2">{desc}</p>
-        <div className="flex flex-wrap gap-2">
-          {skills.slice(0, 3).map(skill => (
-            <span key={skill} className="text-xs font-medium text-purple-400 bg-purple-900/50 px-2 py-1 rounded-full">
+
+      {/* Content (fixed card height; description scrolls to show full text) */}
+      <div className="p-4 h-[calc(420px-64px)] flex flex-col">
+        <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+
+        {/* FULL description visible via scroll (same height across cards) */}
+        <div className="text-gray-300 text-sm leading-relaxed overflow-auto pr-2 flex-1">
+          {desc}
+        </div>
+
+        {/* Skills pinned to bottom */}
+        <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-700/60">
+          {skills.slice(0, 6).map((skill) => (
+            <span
+              key={skill}
+              className="text-xs font-medium text-purple-300 bg-purple-900/40 px-2 py-1 rounded-full border border-purple-500/20"
+            >
               {skill}
             </span>
           ))}
@@ -66,6 +107,31 @@ const ProjectCard = ({ title, desc, image, skills, index, isHovered, onHover }) 
 
 export default function Projects() {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+  const scrollRef = useRef(null);
+  const isPaused = useRef(false);
+
+  // Duplicate list for seamless loop
+  const loopData = useMemo(() => [...projectsData, ...projectsData], []);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    let animationId;
+    const speed = 0.25;
+
+    const animate = () => {
+      if (!isPaused.current) {
+        container.scrollLeft += speed;
+        const half = container.scrollWidth / 2;
+        if (container.scrollLeft >= half) container.scrollLeft = 0;
+      }
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, []);
 
   return (
     <section id="projects" className="py-24 pb-24 font-sans relative">
@@ -75,12 +141,16 @@ export default function Projects() {
           <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         </div>
 
-        {/* Horizontal Scrolling Container (Netflix Card Style) */}
-        <div className="flex overflow-x-scroll py-8 -mx-6 custom-scrollbar">
-          {projectsData.map((p, i) => (
-            <ProjectCard 
-              key={i} 
-              {...p} 
+        <div
+          ref={scrollRef}
+          className="flex overflow-x-scroll py-8 -mx-6 custom-scrollbar"
+          onMouseEnter={() => (isPaused.current = true)}
+          onMouseLeave={() => (isPaused.current = false)}
+        >
+          {loopData.map((p, i) => (
+            <ProjectCard
+              key={`${p.title}-${i}`}
+              {...p}
               index={i}
               isHovered={hoveredCardIndex === i}
               onHover={setHoveredCardIndex}

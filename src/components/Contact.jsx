@@ -98,11 +98,7 @@ export default function Contact() {
       <div className="mt-8 w-full max-w-md bg-[#0d081f] p-6 rounded-lg shadow-lg border border-gray-700">
         <h3 className="text-xl font-semibold text-white text-center">
           Connect With Me <span className="ml-1">🚀</span>
-        </h3>
-
-        <p className="text-primary text-center font-medium my-4 text-lg">
-          Email: yashbhawarkar@gmail.com
-        </p>
+        </h3> 
 
         {/* Status message */}
         {status.state !== "idle" && (

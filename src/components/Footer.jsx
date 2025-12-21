@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Footer() {
   const linkedInUrl = "https://linkedin.com/in/yash-bhawarkar/";
-  const githubUrl = "https://github.com/yash-bhawarkar-dev"; 
+  const githubUrl = "https://github.com/YashBhawarkar"; 
 
   const navLinks = [
     { name: 'About', href: '#about' },

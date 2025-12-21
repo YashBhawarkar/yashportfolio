@@ -3,7 +3,18 @@ import useTypewriter from "../hooks/useTypewriter";
 import profilePhoto from "../assets/yash-profile-photo.jpg";
 
 export default function About() {
-  const roles = ["Software Engineer", "Coder", "Developer"];
+  const roles = [
+    "Software Engineer",
+    "Full-Stack Developer",
+    "Backend Engineer",
+    "Applied AI Engineer",
+    "Cloud Engineer",
+    "AI/ML Engineer",
+    "Gen AI Engineer",
+    "Systems Engineer",
+    "Problem Solver",
+    "Tech Innovator"
+  ];
   const typedText = useTypewriter({ words: roles });
 
   return (
@@ -14,13 +25,11 @@ export default function About() {
       <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-y-10 md:gap-x-12">
         <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 leading-tight">
-            Hi, I am
+            Hello, I’m
           </h1>
-
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
             Yash Bhawarkar
           </h2>
-
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 leading-tight">
             <span className="text-white">I am a </span>
             <span className="text-primary">
@@ -30,13 +39,15 @@ export default function About() {
           </h3>
 
           <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-10 mt-8 leading-relaxed">
-            Experienced software engineer with 3+ years in backend development, AI/ML integration, and
-            Cloud-native systems, passionate about applying computing to real-world challenges.
-            Specialized in scalable solutions using{" "}
+            Full-Stack Software Engineer with{" "}
+            <span className="text-blue-500">3+ years of experience</span> building scalable,
+            cloud-native applications. Specialized in{" "}
             <span className="text-blue-500">Node.js</span>,{" "}
             <span className="text-blue-500">Firebase</span>, and Cloud Computing (
-            <span className="text-blue-500">GCP/AWS/Azure</span>).
+            <span className="text-blue-500">GCP/AWS/Azure</span>), with a strong focus on
+            backend systems, AI/ML integration, and modern full-stack development.
           </p>
+
 
           <a
             href="/Yash Bhawarkar Resume.pdf"

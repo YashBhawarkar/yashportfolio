@@ -3,12 +3,24 @@ import React, { useMemo, useRef, useState } from "react";
 import awsLogo from "../assets/aws-logo.png";
 import gcpLogo from "../assets/gcp-logo.png";
 import azureLogo from "../assets/azure-logo.jpeg";
-// import salesforceLogo from "../assets/salesforce-logo.png";
-// import mongodbLogo from "../assets/mongodb-logo.png";
-// import scrumLogo from "../assets/scrum-logo.png";
-// import githubLogo from "../assets/github-logo.png";
+import salesforceLogo from "../assets/salesforce-logo.png";
+import mongodbLogo from "../assets/mongodb-logo.png";
+import certiprofLogo from "../assets/certiprof-logo.png";
+import githubLogo from "../assets/github-logo.png";
 
 const certificationsData = [
+  {
+    title: "Associate Cloud Engineer",
+    vendor: "Google Cloud Platform (GCP)",
+    logo: gcpLogo,
+    link: "https://google.accredible.com/6d7602cd-8f2a-4e22-86cb-dfba9e11de9a",
+  },
+  {
+    title: "Generative AI Leader",
+    vendor: "Google Cloud Platform (GCP)",
+    logo: gcpLogo,
+    link: "https://www.credly.com/badges/3fa03dd6-8365-4bf3-9f84-41b9bd97f44b/linked_in_profile",
+  },
   {
     title: "AWS Certified Solutions Architect Associate",
     vendor: "Amazon Web Services (AWS)",
@@ -19,56 +31,68 @@ const certificationsData = [
     title: "AWS Certified Developer Associate",
     vendor: "Amazon Web Services (AWS)",
     logo: awsLogo,
-    link: "#",
+    link: "https://www.credly.com/badges/d7d3a2d1-fbc1-41e3-a2a7-cdaaadc15ac0/linked_in_profile",
   },
   {
     title: "AWS Certified Cloud Practitioner",
     vendor: "Amazon Web Services (AWS)",
     logo: awsLogo,
-    link: "#",
-  },
-  {
-    title: "Google Cloud Certified Associate Cloud Engineer",
-    vendor: "Google Cloud Platform (GCP)",
-    logo: gcpLogo,
-    link: "#",
+    link: "https://www.credly.com/badges/530e3ae5-f9c9-465f-9413-0a1c1ea096dc/linked_in_profile",
   },
   {
     title: "AI-102: Azure AI Engineer Associate",
     vendor: "Microsoft Azure",
     logo: azureLogo,
-    link: "#",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/yashbhawarkar-2172/FD5B1E747711592B?sharingId=621CAD0D0DA803EC",
+  },
+  {
+    title: "DP-203: Azure Data Engineer Associate",
+    vendor: "Microsoft Azure",
+    logo: azureLogo,
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/yashbhawarkar-2172/4DA4D9423D831A14?sharingId=621CAD0D0DA803EC",
   },
   {
     title: "DP-100: Azure Data Scientist Associate",
     vendor: "Microsoft Azure",
     logo: azureLogo,
-    link: "#",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/yashbhawarkar-2172/89DB0002FDE9070C?sharingId=621CAD0D0DA803EC",
   },
   {
-    title: "Salesforce Certified Associate",
+    title: "AI-900: Azure AI Fundamentals",
+    vendor: "Microsoft Azure",
+    logo: azureLogo,
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/yashbhawarkar-2172/B1D6A3D4DFA47BA5?sharingId=621CAD0D0DA803EC",
+  },
+  {
+    title: "AZ-900: Azure Fundamentals",
+    vendor: "Microsoft Azure",
+    logo: azureLogo,
+    link: "https://www.credly.com/badges/9144af83-cb72-4ccc-96fd-6d8dd3ca3189?source=linked_in_profile",
+  },
+  {
+    title: "Salesforce Associate",
     vendor: "Salesforce",
-    logo: "/salesforce-logo.png",
-    link: "#",
+    logo: salesforceLogo,
+    link: "https://drive.google.com/file/d/1Ur-w5GRU7T1Q-LQMtO2U4BhTrfQYRyD2/view?usp=share_link",
   },
   {
-    title: "MongoDB SI Associate Certification",
+    title: "MongoDB SI Associate",
     vendor: "MongoDB",
-    logo: "/mongodb-logo.png",
-    link: "#",
+    logo: mongodbLogo,
+    link: "https://learn.mongodb.com/c/a-IG6wjzTMG9n5aYo9JFnw",
   },
   {
-    title: "Scrum Foundation Professional Certificate SFPC™",
-    vendor: "Scrum",
-    logo: "/scrum-logo.png",
-    link: "#",
+    title: "Scrum Foundation",
+    vendor: "Certiprof",
+    logo: certiprofLogo,
+    link: "https://drive.google.com/file/d/10Epo3VK-759er1fSPeNJ0ButGwtG0_Ms/view?usp=sharing",
   },
   {
-    title: "GitHub Foundation Certification",
+    title: "GitHub Foundation",
     vendor: "GitHub",
-    logo: "/github-logo.png",
-    link: "#",
-  },
+    logo: githubLogo,
+    link: "https://www.credly.com/badges/f1945b61-d64b-4f95-ac25-5f37d631b251/linked_in_profile",
+  }
 ];
 
 function clampIndex(i, len) {
