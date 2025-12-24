@@ -20,18 +20,6 @@ const projectsData = [
     skills: ["Python", "LangChain", "FAISS", "HuggingFace Embeddings", "Groq LLM", "Streamlit"],
     link: "https://groq-rag-assistant.streamlit.app/"
   },
-  {
-    title: "Project 4",
-    desc: "Backend development focusing on scalable enterprise products.",
-    skills: ["Node.js", "Express.js", "MongoDB", "REST APIs"],
-    link: "https://example.com/project-4", // <-- change
-  },
-  {
-    title: "Project 5",
-    desc: "Cloud-native system design and deployment on AWS and Azure.",
-    skills: ["AWS", "Azure", "Docker", "Cloud Architecture"],
-    link: "https://example.com/project-5", // <-- change
-  },
 ];
 
 const ProjectCard = ({ title, desc, skills, link, index, isHovered, onHover }) => {

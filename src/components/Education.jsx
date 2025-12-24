@@ -1,4 +1,3 @@
-// file: src/components/Education.jsx
 import React from "react";
 import msuLogo from "../assets/msu-logo.png";
 import dyLogo from "../assets/dypatil-logo.jpeg";
@@ -27,16 +26,12 @@ const educationData = [
 ];
 
 const EducationEntry = ({ data, index }) => {
-  const isRightSide = index % 2 !== 0;
+  const isRight = index % 2 !== 0;
 
   return (
-    <div
-      className={`flex flex-col items-center mb-16 xl2:flex-row ${
-        isRightSide ? "xl2:justify-end" : "xl2:justify-start"
-      }`}
-    >
-      {/* Timeline Icon */}
-      <div className="absolute left-0 xl2:left-1/2 transform -translate-x-1/2 bg-gray-400 border-4 border-primary w-12 h-12 rounded-full flex justify-center items-center z-10">
+    <div className="relative flex flex-col xl:flex-row items-center mb-12 xl:mb-20">
+      {/* Timeline dot (desktop only) */}
+      <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gray-400 border-4 border-primary items-center justify-center z-10">
         <img
           src={data.icon}
           alt={`${data.institution} icon`}
@@ -46,11 +41,21 @@ const EducationEntry = ({ data, index }) => {
 
       {/* Card */}
       <div
-        className={`w-full xl2:max-w-md p-4 xl2:p-8 rounded-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] ml-8 transform transition-transform duration-300 hover:scale-105
-        ${isRightSide ? "xl2:mr-0 xl2:ml-28" : "xl2:ml-0 xl2:mr-28"}`}
+        className={`
+          w-full max-w-full xl:max-w-md
+          p-5 sm:p-6 xl:p-8
+          rounded-2xl
+          border border-white/20
+          bg-gray-900/90 backdrop-blur-md
+          shadow-[0_0_20px_rgba(130,69,236,0.3)]
+          transition-transform duration-300
+          xl:hover:scale-105
+          ${isRight ? "xl:ml-auto xl:mr-24" : "xl:mr-auto xl:ml-24"}
+        `}
       >
-        <div className="flex items-center space-x-6">
-          <div className="w-16 h-16 bg-white rounded-md overflow-hidden flex items-center justify-center">
+        {/* Header */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 bg-white rounded-md overflow-hidden flex items-center justify-center shrink-0">
             <img
               src={data.logo}
               alt={`${data.institution} logo`}
@@ -58,29 +63,28 @@ const EducationEntry = ({ data, index }) => {
             />
           </div>
 
-          <div className="flex flex-col justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-white">
-                {data.title}
-              </h3>
-              <h4 className="text-sm text-gray-300">
-                {data.institution}
-              </h4>
-            </div>
-
-            <p className="text-sm text-gray-500 mt-2">{data.date}</p>
-
-            {/* GPA */}
-            {data.gpa && (
-              <p className="text-sm text-primary font-semibold mt-1">
-                GPA: {data.gpa}
-              </p>
-            )}
+          <div>
+            <h3 className="text-base sm:text-lg font-semibold text-white">
+              {data.title}
+            </h3>
+            <p className="text-sm text-gray-300">
+              {data.institution}
+            </p>
           </div>
         </div>
 
+        {/* Meta */}
+        <div className="mt-3">
+          <p className="text-sm text-gray-500">{data.date}</p>
+          {data.gpa && (
+            <p className="text-sm text-primary font-semibold mt-1">
+              GPA: {data.gpa}
+            </p>
+          )}
+        </div>
+
         {/* Description */}
-        <p className="mt-4 text-gray-400 leading-relaxed">
+        <p className="mt-4 text-gray-400 leading-relaxed text-sm sm:text-base">
           {data.description}
         </p>
       </div>
@@ -92,27 +96,33 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[3vw] font-sans bg-skills-gradient clip-path-custom-3 mx-auto max-w-full xl2:max-w-[1430px]"
+      className="
+        py-16 sm:py-24
+        px-4 sm:px-6 md:px-[7vw] xl:px-[12vw]
+        font-sans
+        bg-skills-gradient
+        mx-auto max-w-full
+      "
     >
-      <div className="m-auto max-w-[550px] xl2:max-w-full">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-          <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+      {/* Header */}
+      <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white">
+          EDUCATION
+        </h2>
+        <div className="w-24 sm:w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+        <p className="text-gray-400 mt-4 text-base sm:text-lg font-semibold">
+          Academic background in computer science with strong foundations in software engineering, cloud computing, and applied artificial intelligence.
+        </p>
+      </div>
 
-          {/* SEO + recruiter-friendly subtitle */}
-          <p className="text-gray-400 mt-4 text-lg font-semibold max-w-3xl mx-auto">
-            Academic background in computer science with strong foundations in software engineering, cloud computing, and applied artificial intelligence.
-          </p>
-        </div>
+      {/* Timeline container */}
+      <div className="relative">
+        {/* Center line (desktop only) */}
+        <div className="hidden xl:block absolute left-1/2 top-0 -translate-x-1/2 w-1 h-full bg-white/30"></div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 transform -translate-x-1/2 w-1 bg-white h-full xl2:left-1/2 xl2:translate-x-0"></div>
-
-          {educationData.map((entry, index) => (
-            <EducationEntry key={index} data={entry} index={index} />
-          ))}
-        </div>
+        {educationData.map((entry, index) => (
+          <EducationEntry key={index} data={entry} index={index} />
+        ))}
       </div>
     </section>
   );

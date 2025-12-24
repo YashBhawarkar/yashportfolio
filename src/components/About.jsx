@@ -1,6 +1,7 @@
 // file: src/components/About.jsx
 import useTypewriter from "../hooks/useTypewriter";
 import profilePhoto from "../assets/yash-profile-photo.jpg";
+import resumePdf from "../assets/Yash_Bhawarkar_Resume.pdf";
 
 export default function About() {
   const roles = [
@@ -50,7 +51,7 @@ export default function About() {
 
 
           <a
-            href="/Yash Bhawarkar Resume.pdf"
+            href={resumePdf}
             target="_blank"
             rel="noopener noreferrer"
             download="Yash Bhawarkar Resume.pdf"
@@ -72,6 +73,7 @@ export default function About() {
             <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 animate-spin-slow">
               <div className="w-full h-full rounded-full bg-[#050414]" />
             </div>
+
 
             {/* Outer soft blur aura */}
             <div className="absolute -inset-6 rounded-full bg-purple-500/20 blur-2xl" />
