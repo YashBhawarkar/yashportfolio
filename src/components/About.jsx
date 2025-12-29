@@ -1,7 +1,6 @@
 // file: src/components/About.jsx
 import useTypewriter from "../hooks/useTypewriter";
 import profilePhoto from "../assets/yash-profile-photo.jpg";
-import resumePdf from "../assets/Yash_Bhawarkar_Resume.pdf";
 
 export default function About() {
   const roles = [
@@ -14,9 +13,14 @@ export default function About() {
     "Gen AI Engineer",
     "Systems Engineer",
     "Problem Solver",
-    "Tech Innovator"
+    "Tech Innovator",
   ];
+
   const typedText = useTypewriter({ words: roles });
+
+  // Google Drive direct download link
+  const resumeDriveDownloadUrl =
+    "https://drive.google.com/uc?export=download&id=1HjRkTlavmo6oUnQEg2nX8VG1w-sYuzEK";
 
   return (
     <section
@@ -31,6 +35,7 @@ export default function About() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
             Yash Bhawarkar
           </h2>
+
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 leading-tight">
             <span className="text-white">I am a </span>
             <span className="text-primary">
@@ -49,20 +54,64 @@ export default function About() {
             backend systems, AI/ML integration, and modern full-stack development.
           </p>
 
-
+          {/* Enhanced Download Button */}
           <a
-            href={resumePdf}
+            href={resumeDriveDownloadUrl}
             target="_blank"
             rel="noopener noreferrer"
-            download="Yash Bhawarkar Resume.pdf"
-            className="inline-block text-white py-3 px-8 rounded-full mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
-            style={{
-              background: "linear-gradient(90deg, rgb(130, 69, 236), rgb(168, 85, 247))",
-              boxShadow:
-                "rgb(130, 69, 236) 0px 0px 2px, rgb(130, 69, 236) 0px 0px 2px, rgb(130, 69, 236) 0px 0px 40px",
-            }}
+            className="
+              group relative inline-flex items-center justify-center
+              px-10 py-4 mt-6
+              text-lg font-bold tracking-wide text-white
+              rounded-full overflow-hidden
+              transition-all duration-300 ease-out
+              hover:scale-[1.06] active:scale-[0.97]
+              focus:outline-none focus:ring-2 focus:ring-purple-400/80 focus:ring-offset-2 focus:ring-offset-transparent
+            "
           >
-            DOWNLOAD RESUME
+            {/* Base gradient */}
+            <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-fuchsia-500 to-indigo-500" />
+
+            {/* Soft glow aura */}
+            <span className="absolute -inset-6 rounded-full bg-purple-500/25 blur-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+
+            {/* Animated border shimmer */}
+            <span className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-purple-400/60 via-pink-400/50 to-indigo-400/60 opacity-70" />
+
+            {/* Shine sweep */}
+            <span className="absolute inset-0 overflow-hidden">
+              <span
+                className="
+                  absolute -left-[60%] top-0 h-full w-[45%]
+                  bg-gradient-to-r from-transparent via-white/35 to-transparent
+                  skew-x-12 opacity-0
+                  transition-all duration-700
+                  group-hover:left-[120%] group-hover:opacity-100
+                "
+              />
+            </span>
+
+            {/* Inner depth layer */}
+            <span className="absolute inset-[2px] rounded-full bg-black/20" />
+
+            {/* Text + icon */}
+            <span className="relative z-10 flex items-center gap-2">
+              DOWNLOAD RESUME
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-[1px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 4v10m0 0l-4-4m4 4l4-4M4 20h16"
+                />
+              </svg>
+            </span>
           </a>
         </div>
 
@@ -73,7 +122,6 @@ export default function About() {
             <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 animate-spin-slow">
               <div className="w-full h-full rounded-full bg-[#050414]" />
             </div>
-
 
             {/* Outer soft blur aura */}
             <div className="absolute -inset-6 rounded-full bg-purple-500/20 blur-2xl" />
@@ -87,9 +135,7 @@ export default function About() {
                 transform transition duration-500
                 hover:scale-[1.03]
               "
-              style={{
-                willChange: "transform",
-              }}
+              style={{ willChange: "transform" }}
             >
               {/* Hover tilt */}
               <div className="w-full h-full transition-transform duration-500 hover:rotate-1">
