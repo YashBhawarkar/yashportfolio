@@ -20,7 +20,7 @@ export default function About() {
 
   // Google Drive direct download link
   const resumeDriveDownloadUrl =
-    "https://drive.google.com/uc?export=download&id=1HjRkTlavmo6oUnQEg2nX8VG1w-sYuzEK";
+    "https://drive.google.com/uc?export=download&id=1FOuwxbOusybtMH4HsDI7Z93DzVOiPYKk";
 
   return (
     <section
