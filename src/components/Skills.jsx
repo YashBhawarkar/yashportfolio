@@ -1,4 +1,3 @@
-// file: src/components/Skills.jsx
 import React from "react";
 
 const skillCategories = [
@@ -82,7 +81,7 @@ const skillCategories = [
 
 function SkillPill({ label }) {
   return (
-    <span className="text-xs sm:text-sm font-semibold text-purple-300 bg-purple-900/30 border border-purple-500/20 px-3 py-1 rounded-full">
+    <span className="text-xs sm:text-sm font-semibold text-cyan-100 bg-cyan-300/10 border border-cyan-300/20 px-3 py-1 rounded-full">
       {label}
     </span>
   );
@@ -92,8 +91,9 @@ function CategoryCard({ title, icon, items }) {
   return (
     <div
       className="
-        rounded-2xl border border-white/10 bg-gray-900/60 backdrop-blur-md
-        p-6 shadow-[0_0_20px_1px_rgba(130,69,236,0.18)]
+        glass-tilt-card
+        rounded-3xl border border-white/10 bg-slate-950/60 backdrop-blur-xl
+        p-6 shadow-2xl shadow-slate-950/30
         transition-transform duration-300 hover:scale-[1.02]
         animate-skill-pulse
       "
@@ -101,9 +101,9 @@ function CategoryCard({ title, icon, items }) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-xl font-bold text-white">{title}</h3>
-          <p className="text-sm text-gray-400 mt-1">Core tools & strengths</p>
+          <p className="text-sm text-slate-400 mt-1">Core tools & strengths</p>
         </div>
-        <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/20 flex items-center justify-center text-2xl">
+        <div className="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-300/20 flex items-center justify-center text-2xl">
           {icon}
         </div>
       </div>
@@ -119,11 +119,11 @@ function CategoryCard({ title, icon, items }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[20vw] font-sans">
+    <section id="skills" className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans">
       <div className="text-center mb-14">
-        <h2 className="text-4xl font-bold text-white">SKILLS</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
+        <h2 className="text-4xl font-bold text-emerald-300">SKILLS</h2>
+        <div className="w-32 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 mx-auto mt-4 rounded-full"></div>
+        <p className="text-slate-300 mt-4 text-lg font-semibold">
           Key skills and technologies I use to create reliable, scalable, and high-performance software systems.
         </p>
       </div>

@@ -1,12 +1,10 @@
-// file: src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
+import { profile } from "../data/portfolioData";
 
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState("about");
   const [scrolled, setScrolled] = useState(false);
-
-  const linkedInUrl = "https://linkedin.com/in/yash-bhawarkar/";
-  const githubUrl = "https://github.com/YashBhawarkar";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -20,6 +18,8 @@ export default function Navbar() {
 
   // Active section tracking
   useEffect(() => {
+    if (!("IntersectionObserver" in window)) return;
+
     const sections = navLinks.map((link) => document.querySelector(link.href));
 
     const observer = new IntersectionObserver(
@@ -43,7 +43,6 @@ export default function Navbar() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ✅ Fix 1: background/blur on scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
@@ -51,39 +50,59 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMobileMenuOpen]);
+
   const handleLinkClick = (id) => {
     setActiveLink(id);
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300
-      px-[7vw] md:px-[7vw] lg:px-[20vw]
-      ${scrolled ? "bg-[#050414]/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"}
+      px-[7vw] md:px-[7vw] lg:px-[16vw]
+      ${scrolled || isMobileMenuOpen ? "bg-[#04111f]/90 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-slate-950/25" : "bg-transparent"}
       `}
     >
       <div className="text-white py-5 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-lg font-semibold cursor-pointer select-none">
-          <span className="text-primary">&lt;</span>
+        <a
+          href="#about"
+          onClick={() => handleLinkClick("about")}
+          className="text-lg font-semibold select-none rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+          aria-label="Go to top"
+        >
+          <span className="text-emerald-300">&lt;</span>
           <span className="text-white">Yash</span>
-          <span className="text-primary">/</span>
+          <span className="text-cyan-300">/</span>
           <span className="text-white">Bhawarkar</span>
-          <span className="text-primary">&gt;</span>
-        </div>
+          <span className="text-emerald-300">&gt;</span>
+        </a>
 
         {/* Desktop links */}
-        <ul className="hidden navbar:flex space-x-8 text-gray-300">
+        <ul className="hidden navbar:flex space-x-8 text-slate-300">
           {navLinks.map((link) => {
             const id = link.href.substring(1);
             return (
               <li
                 key={link.name}
-                className={`cursor-pointer hover:text-primary transition ${
-                  id === activeLink ? "text-primary" : ""
+                className={`cursor-pointer hover:text-cyan-200 transition ${
+                  id === activeLink ? "text-emerald-300" : ""
                 }`}
               >
-                <a href={link.href} onClick={() => handleLinkClick(id)}>
+                <a
+                  href={link.href}
+                  onClick={() => handleLinkClick(id)}
+                  className="rounded-sm focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+                >
                   {link.name}
                 </a>
               </li>
@@ -94,10 +113,10 @@ export default function Navbar() {
         {/* Desktop Social */}
         <div className="hidden navbar:flex space-x-4">
           <a
-            href={githubUrl}
+            href={profile.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-primary transition"
+            className="text-slate-300 hover:text-cyan-200 transition rounded-sm focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             aria-label="GitHub"
           >
             <svg
@@ -114,10 +133,10 @@ export default function Navbar() {
           </a>
 
           <a
-            href={linkedInUrl}
+            href={profile.links.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-primary transition"
+            className="text-slate-300 hover:text-cyan-200 transition rounded-sm focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
             aria-label="LinkedIn"
           >
             <svg
@@ -134,8 +153,15 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile icon (you can connect your mobile menu here if needed) */}
-        <div className="navbar:hidden">
+        {/* Mobile menu toggle */}
+        <button
+          type="button"
+          className="navbar:hidden text-cyan-200 p-2 -mr-2 rounded-lg transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300/80"
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+        >
           <svg
             stroke="currentColor"
             fill="none"
@@ -143,17 +169,73 @@ export default function Navbar() {
             viewBox="0 0 24 24"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-3xl text-primary cursor-pointer"
+            className="text-3xl"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            {isMobileMenuOpen ? (
+              <>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </>
+            )}
           </svg>
-        </div>
+        </button>
       </div>
+
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-navigation"
+          className="navbar:hidden pb-5 border-t border-white/10 bg-[#04111f]/95 backdrop-blur-xl"
+        >
+          <ul className="flex flex-col py-3 text-slate-300">
+            {navLinks.map((link) => {
+              const id = link.href.substring(1);
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={() => handleLinkClick(id)}
+                    className={`block py-3 transition hover:text-cyan-200 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-300/70 ${
+                      id === activeLink ? "text-emerald-300" : ""
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="flex items-center gap-4 pt-3 border-t border-white/10">
+            <a
+              href={profile.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-cyan-200 transition rounded-sm focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              aria-label="GitHub"
+            >
+              GitHub
+            </a>
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-cyan-200 transition rounded-sm focus:outline-none focus:ring-2 focus:ring-cyan-300/70"
+              aria-label="LinkedIn"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

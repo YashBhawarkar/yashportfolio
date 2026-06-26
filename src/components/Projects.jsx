@@ -42,16 +42,16 @@ const ProjectCard = ({ title, desc, skills, link, index, isHovered, onHover }) =
       aria-label={`Open project: ${title}`}
       onClick={handleOpen}
       onKeyDown={handleKeyDown}
-      className={`flex-none w-64 md:w-72 lg:w-80 h-[420px] mx-2 cursor-pointer transition-all duration-300 rounded-lg overflow-hidden bg-gray-800 border border-gray-700
-      ${isHovered ? "scale-[1.08] z-40 shadow-2xl shadow-purple-700/80 -translate-y-3" : "z-30 opacity-70 hover:opacity-100"}
-      focus:outline-none focus:ring-2 focus:ring-purple-500/70
+      className={`flex-none w-64 md:w-72 lg:w-80 h-[420px] mx-2 cursor-pointer transition-all duration-300 rounded-2xl overflow-hidden bg-slate-950/70 border border-white/10 backdrop-blur-xl
+      ${isHovered ? "scale-[1.08] z-40 shadow-2xl shadow-cyan-950/80 -translate-y-3 border-cyan-300/40" : "z-30 opacity-75 hover:opacity-100"}
+      focus:outline-none focus:ring-2 focus:ring-cyan-300/70
       `}
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
       style={{ position: "relative" }}
     >
       {/* Top banner */}
-      <div className="relative w-full h-16 bg-gradient-to-r from-purple-700/40 via-pink-600/20 to-indigo-600/30 border-b border-gray-700">
+      <div className="relative w-full h-16 bg-gradient-to-r from-emerald-400/20 via-cyan-400/20 to-violet-500/20 border-b border-white/10">
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
           <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 border border-white/10 text-white text-sm">
@@ -61,8 +61,8 @@ const ProjectCard = ({ title, desc, skills, link, index, isHovered, onHover }) =
 
           {/* tiny hint */}
           {link && link !== "#" && (
-            <span className="ml-2 text-[11px] text-gray-300/70 border border-white/10 px-2 py-[2px] rounded-full">
-              Open ↗
+            <span className="ml-2 text-[11px] text-slate-300/80 border border-white/10 px-2 py-[2px] rounded-full">
+              Open
             </span>
           )}
         </div>
@@ -73,16 +73,16 @@ const ProjectCard = ({ title, desc, skills, link, index, isHovered, onHover }) =
         <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
 
         {/* FULL description visible via scroll (same height across cards) */}
-        <div className="text-gray-300 text-sm leading-relaxed overflow-auto pr-2 flex-1">
+        <div className="text-slate-300 text-sm leading-relaxed overflow-auto pr-2 flex-1">
           {desc}
         </div>
 
         {/* Skills pinned to bottom */}
-        <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-700/60">
+        <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-white/10">
           {skills.slice(0, 6).map((skill) => (
             <span
               key={skill}
-              className="text-xs font-medium text-purple-300 bg-purple-900/40 px-2 py-1 rounded-full border border-purple-500/20"
+              className="text-xs font-medium text-cyan-100 bg-cyan-300/10 px-2 py-1 rounded-full border border-cyan-300/20"
             >
               {skill}
             </span>
@@ -125,8 +125,8 @@ export default function Projects() {
     <section id="projects" className="py-24 pb-24 font-sans relative">
       <div className="max-w-[80vw] mx-auto px-6">
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold text-white">PROJECTS</h2>
-          <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+          <h2 className="text-4xl font-bold text-emerald-300">PROJECTS</h2>
+          <div className="w-32 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 mx-auto mt-4 rounded-full"></div>
         </div>
 
         <div

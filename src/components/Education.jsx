@@ -7,7 +7,7 @@ const educationData = [
     title: "Master of Science in Computer Science",
     institution: "Michigan State University",
     date: "August 2025 – May 2027 (Expected)",
-    gpa: "3.83 / 4.00",
+    gpa: "3.91 / 4.00",
     description:
       "Graduate studies focused on advanced computer science concepts including algorithms, cloud computing, distributed systems, and applied artificial intelligence.",
     logo: msuLogo,
@@ -46,6 +46,7 @@ const EducationEntry = ({ data, index }) => {
           p-5 sm:p-6 xl:p-8
           rounded-2xl
           border border-white/20
+          glass-tilt-card
           bg-gray-900/90 backdrop-blur-md
           shadow-[0_0_20px_rgba(130,69,236,0.3)]
           transition-transform duration-300
@@ -64,10 +65,10 @@ const EducationEntry = ({ data, index }) => {
           </div>
 
           <div>
-            <h3 className="text-base sm:text-lg font-semibold text-white">
+            <h3 className="text-lg sm:text-xl font-black leading-tight bg-gradient-to-r from-emerald-200 via-cyan-200 to-blue-300 bg-clip-text text-transparent drop-shadow-[0_0_14px_rgba(45,212,191,0.18)]">
               {data.title}
             </h3>
-            <p className="text-sm text-gray-300">
+            <p className="mt-1 inline-block text-sm sm:text-base font-bold text-white">
               {data.institution}
             </p>
           </div>
@@ -106,10 +107,10 @@ export default function Education() {
     >
       {/* Header */}
       <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white">
+        <h2 className="text-3xl sm:text-4xl font-bold text-emerald-300">
           EDUCATION
         </h2>
-        <div className="w-24 sm:w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+        <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 mx-auto mt-4 rounded-full"></div>
         <p className="text-gray-400 mt-4 text-base sm:text-lg font-semibold">
           Academic background in computer science with strong foundations in software engineering, cloud computing, and applied artificial intelligence.
         </p>

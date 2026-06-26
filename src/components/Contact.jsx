@@ -88,17 +88,24 @@ export default function Contact() {
       className="flex flex-col items-center justify-center py-24 px-[12vw] md:px-[7vw] lg:px-[20vw]"
     >
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-bold text-white">CONTACT</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          Open to collaborations, research, and opportunities.
+        <h2 className="text-4xl font-bold text-emerald-300">Let's Connect</h2>
+        <div className="w-32 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 mx-auto mt-4 rounded-full"></div>
+        <p className="text-slate-300 mt-4 text-lg font-semibold">
+          Open to collaborations, research, internships, full-time roles, and
+          ambitious engineering conversations.
         </p>
       </div>
 
-      <div className="mt-8 w-full max-w-md bg-[#0d081f] p-6 rounded-lg shadow-lg border border-gray-700">
+      <div className="glass-tilt-card relative mt-8 w-full max-w-md overflow-hidden bg-slate-950/70 p-6 rounded-3xl shadow-2xl shadow-slate-950/40 border border-white/10 backdrop-blur-xl">
+        <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/70 to-transparent" />
+        <div className="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-cyan-400/10 blur-2xl" />
+
         <h3 className="text-xl font-semibold text-white text-center">
-          Connect With Me <span className="ml-1">🚀</span>
-        </h3> 
+          Send a note
+        </h3>
+        <p className="mt-2 text-center text-sm leading-relaxed text-slate-400">
+          Tell me what you are building, researching, or hiring for.
+        </p>
 
         {/* Status message */}
         {status.state !== "idle" && (
@@ -115,7 +122,7 @@ export default function Contact() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="mt-4 flex flex-col space-y-4">
+        <form onSubmit={handleSubmit} className="mt-5 flex flex-col space-y-4">
           {/* Honeypot field (hidden from humans) */}
           <input
             type="text"
@@ -135,7 +142,7 @@ export default function Contact() {
             onChange={onChange}
             placeholder="Your Email"
             required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
+            className="w-full p-3 rounded-md bg-slate-950/80 text-white border border-white/10 focus:outline-none focus:border-cyan-300/70"
           />
 
           <input
@@ -145,7 +152,7 @@ export default function Contact() {
             onChange={onChange}
             placeholder="Your Name"
             required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
+            className="w-full p-3 rounded-md bg-slate-950/80 text-white border border-white/10 focus:outline-none focus:border-cyan-300/70"
           />
 
           <input
@@ -155,7 +162,7 @@ export default function Contact() {
             onChange={onChange}
             placeholder="Subject"
             required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
+            className="w-full p-3 rounded-md bg-slate-950/80 text-white border border-white/10 focus:outline-none focus:border-cyan-300/70"
           />
 
           <textarea
@@ -165,7 +172,7 @@ export default function Contact() {
             placeholder="Message"
             rows="4"
             required
-            className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
+            className="w-full p-3 rounded-md bg-slate-950/80 text-white border border-white/10 focus:outline-none focus:border-cyan-300/70"
           />
 
           <button
@@ -174,7 +181,7 @@ export default function Contact() {
             className={`w-full py-3 text-white font-semibold rounded-md transition ${
               isSending
                 ? "bg-gray-600 cursor-not-allowed"
-                : "bg-gradient-to-r from-purple-600 to-pink-500 hover:opacity-90"
+                : "bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 text-slate-950 hover:opacity-90"
             }`}
           >
             {isSending ? "Sending..." : "Send"}

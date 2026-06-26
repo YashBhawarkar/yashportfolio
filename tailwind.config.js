@@ -2,6 +2,24 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
+    fontFamily: {
+      sans: [
+        "Arial Narrow",
+        "Aptos",
+        "Trebuchet MS",
+        "Arial",
+        "system-ui",
+        "sans-serif",
+      ],
+      display: [
+        "Impact",
+        "Haettenschweiler",
+        "Arial Black",
+        "Franklin Gothic Heavy",
+        "Arial Narrow",
+        "sans-serif",
+      ],
+    },
     screens: {
       sm: "640px",
       md: "768px",
@@ -12,8 +30,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#8245ec", // Purple / Indigo
-        secondary: "#1f2937", // Dark Gray
+        primary: "#18ba8d",
+        secondary: "#0f172a",
       },
 
       /* ---------------- ANIMATIONS ---------------- */

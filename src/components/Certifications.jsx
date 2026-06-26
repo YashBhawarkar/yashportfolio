@@ -133,7 +133,7 @@ const Card = ({ cert, index, activeIndex, total, onSelect, onAfterSelect }) => {
   const baseClass = `
     absolute inset-0 w-full h-full p-8
     transition-all duration-700 ease-in-out
-    bg-gray-800 border-2 border-primary/50 rounded-2xl
+    bg-slate-950/75 border-2 border-cyan-300/30 rounded-2xl backdrop-blur-xl
     flex flex-col justify-between items-center text-center
     will-change-transform
   `;
@@ -161,7 +161,7 @@ const Card = ({ cert, index, activeIndex, total, onSelect, onAfterSelect }) => {
       }}
     >
       <div className="flex flex-col items-center">
-        <div className="w-24 h-24 mb-4 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-primary/30">
+        <div className="w-24 h-24 mb-4 rounded-full bg-emerald-300/10 flex items-center justify-center overflow-hidden border border-cyan-300/20">
           {cert.logo ? (
             <img
               src={cert.logo}
@@ -169,7 +169,7 @@ const Card = ({ cert, index, activeIndex, total, onSelect, onAfterSelect }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <span className="text-2xl text-primary font-bold">{index + 1}</span>
+            <span className="text-2xl text-cyan-200 font-bold">{index + 1}</span>
           )}
         </div>
 
@@ -183,7 +183,7 @@ const Card = ({ cert, index, activeIndex, total, onSelect, onAfterSelect }) => {
         rel="noopener noreferrer"
         className={`inline-block px-6 py-2 rounded-full font-semibold transition duration-300 ${
           isCurrent
-            ? "bg-primary hover:bg-purple-700 text-white"
+            ? "bg-primary hover:bg-emerald-500 text-slate-950"
             : "bg-gray-700 text-gray-300 pointer-events-none"
         }`}
       >
@@ -228,8 +228,8 @@ export default function Certifications() {
       className="py-24 px-[7vw] md:px-[7vw] lg:px-[20vw] font-sans relative"
     >
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-white">CERTIFICATIONS</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+        <h2 className="text-4xl font-bold text-emerald-300">CERTIFICATIONS</h2>
+        <div className="w-32 h-1 bg-gradient-to-r from-emerald-300 via-cyan-300 to-violet-400 mx-auto mt-4 rounded-full"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
           A comprehensive list of my professional and technical certifications.
         </p>
@@ -240,7 +240,7 @@ export default function Certifications() {
         ref={carouselRef}
         tabIndex={0}
         onKeyDown={onCarouselKeyDown}
-        className="relative w-full max-w-lg mx-auto h-[420px] my-16 outline-none focus:ring-2 focus:ring-primary/60 rounded-2xl"
+        className="relative w-full max-w-lg mx-auto h-[420px] my-16 outline-none focus:ring-2 focus:ring-cyan-300/70 rounded-2xl"
         aria-label="Certifications carousel. Use Left/Right arrow keys to navigate."
       >
         <div className="relative w-full h-full">
@@ -263,7 +263,7 @@ export default function Certifications() {
             goToPrev();
             focusCarousel();
           }}
-          className="absolute top-1/2 left-0 transform -translate-x-full -translate-y-1/2 p-3 bg-gray-700/80 hover:bg-primary/80 text-white rounded-full z-40 transition"
+          className="absolute top-1/2 left-0 transform -translate-x-full -translate-y-1/2 p-3 bg-slate-800/90 hover:bg-cyan-500/80 text-white rounded-full z-40 transition"
           aria-label="Previous certification"
         >
           <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
@@ -281,7 +281,7 @@ export default function Certifications() {
             goToNext();
             focusCarousel();
           }}
-          className="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 p-3 bg-gray-700/80 hover:bg-primary/80 text-white rounded-full z-40 transition"
+          className="absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2 p-3 bg-slate-800/90 hover:bg-cyan-500/80 text-white rounded-full z-40 transition"
           aria-label="Next certification"
         >
           <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
@@ -314,7 +314,7 @@ export default function Certifications() {
                   transition-all duration-300
                   ${
                     isActive
-                      ? "bg-primary scale-125 shadow-[0_0_8px_rgba(130,69,236,0.8)]"
+                      ? "bg-primary scale-125 shadow-[0_0_8px_rgba(45,212,191,0.75)]"
                       : "bg-gray-600 hover:bg-gray-400 hover:scale-110"
                   }
                 `}
